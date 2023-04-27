@@ -1,0 +1,31 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+       def formInt(ll):
+           ans = 0
+           i=0
+           while ll != None:
+               ans += (10**i)*ll.val
+               ll = ll.next
+               i+=1 
+           return ans
+       def formLinkedList(n):
+           root1 = ListNode(n%10)
+           temp1 = root1
+           n = n//10
+           while n >= 1:
+               root1.next = ListNode(n%10)
+               n = n //10
+               root1 = root1.next
+           return temp1
+
+        
+       num1 = formInt(l1)
+       num2 = formInt(l2)
+       num3 = 0
+       num3 = num1 + num2
+       return formLinkedList(num3)

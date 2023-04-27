@@ -1,0 +1,13 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        x = str(n)
+        for w in range(9000):
+            if int(x) != 1:
+                z = 0
+                for i in x:
+                    y = int(i)
+                    z = z + y**2
+                    x = str(z)
+            else:
+                return True
+        return False

@@ -1,0 +1,18 @@
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        count=0
+        for i in range(len(s)):
+            count=0
+            for j in range(len(s)):
+                if i == j:
+                    continue
+                elif s[i] == s[j]:
+                    count = count + 1
+                    break
+    
+            if count == 0:
+                return i
+                #break
+            else:
+                continue
+        return -1

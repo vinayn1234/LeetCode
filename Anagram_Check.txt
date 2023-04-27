@@ -1,0 +1,22 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        anagram_check = {}
+
+        for word in strs:
+            conv_word_lis = list(word)
+            conv_word_lis.sort()
+            curr_word = ''.join(conv_word_lis)
+            
+            if curr_word in anagram_check:
+                anagram_check[curr_word].append(word)
+            else:
+                anagram_check[curr_word] = [word]
+            
+        
+        final_result = []
+        for conv_word_lis in anagram_check:
+
+            final_result.append(anagram_check[conv_word_lis])
+            
+        return final_result
+

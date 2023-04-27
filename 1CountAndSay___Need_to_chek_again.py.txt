@@ -1,0 +1,14 @@
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        if n == 1:
+            return '1'
+        else:
+            return self.makeCount(self.countAndSay(n-1))
+        
+    @staticmethod
+    def makeCount(n:str) -> str:
+        return ''.join(f'{sum(1 for _ in gr)}{key}' for key, gr in groupby(n))
+
+
+        
+

@@ -1,0 +1,28 @@
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        rows = len(board)
+        col = len(board[0])
+        vis = set()
+
+        def dfs(r,c,curr):
+            if curr == len(word):
+                return True
+            if r < 0 or c < 0 or r >= rows or c >= col or word[curr] != board[r][c] or (r,c) in vis:
+                return False
+            
+            vis.add((r,c))
+            check = ( dfs(r+1, c, curr+1) or
+                      dfs(r-1, c, curr+1) or
+                      dfs(r, c+1, curr+1) or
+                      dfs(r, c-1, curr+1) )
+            
+            vis.remove((r,c))
+            return check
+
+
+        for r in range(rows):
+            for c in range(col):
+                if(dfs(r,c,0)):
+                    return True
+        
+        return False

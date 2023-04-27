@@ -1,0 +1,18 @@
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if digits == "":
+            return []
+        
+        combi = ["","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"]
+
+        que = [""]
+
+        for digit in digits:
+            digit = int(digit)
+
+            for _ in range(len(que)):
+                cur = que.pop(0)
+
+                for letter in combi[digit]:
+                    que.append(cur+letter)
+        return que
